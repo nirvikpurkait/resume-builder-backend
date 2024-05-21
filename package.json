@@ -7,8 +7,9 @@
 		"schema": "./src/database/prisma/schema.prisma"
 	},
 	"scripts": {
-		"start": "ts-node src/index.ts",
-		"dev": "nodemon --exec \"npm start\" --ext \"ts\"",
+		"start": "node dist/index.js",
+		"execute": "ts-node src/index.ts",
+		"dev": "nodemon --exec \"npm run execute\" --ext \"ts\"",
 		"build": "npx tsc",
 		"prisma-generate": "npx prisma generate",
 		"prisma-push": "npx prisma db push --accept-data-loss",

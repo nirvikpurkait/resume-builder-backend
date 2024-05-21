@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get("/api/login", async (req, res) => {
+app.post("/api/login", async (req, res) => {
 	type ReqBody = {
 		username: string;
 		password: string;
@@ -29,7 +29,11 @@ app.get("/api/login", async (req, res) => {
 	if (reqBody.role === String(user.role)) {
 		// check password is correct
 		if (reqBody.password === user.password) {
-			return res.send("Authorized");
+			if (reqBody.role === "ADMIN") {
+				return res.send({ sendTo: "/admin" });
+			} else {
+				return res.send({ sendTo: "/student" });
+			}
 		}
 		return res.send(`Wrong Password`);
 	}
