@@ -41,6 +41,15 @@ app.post("/api/login", async (req, res) => {
 	return res.send(`Unauthorized`);
 });
 
+app.get("/api/user-details", async (req, res) => {
+	const users = await prisma.user.findMany();
+	const modifiedUsers = users.map((user) => {
+		return { username: user.username, id: user.id };
+	});
+
+	return res.json(modifiedUsers);
+});
+
 app.listen(5000, () => {
 	console.log(`app listening on port 5000`);
 });
