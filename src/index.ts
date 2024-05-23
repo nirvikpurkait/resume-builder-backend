@@ -1,17 +1,18 @@
 import express from "express";
-import cors from "cors";
+import cors, { CorsOptions } from "cors";
 import { apiRoute } from "./api/api-routes";
 import "dotenv/config";
+import { baseUrl } from "./utils/base-url";
 
 const app = express();
 
+const corsOption: CorsOptions = {
+	credentials: true,
+	origin: baseUrl,
+};
+
 app.use(express.json());
-app.use(
-	cors({
-		origin: "http://localhost:3000",
-		credentials: true,
-	})
-);
+app.use(cors(corsOption));
 
 app.use("/api", apiRoute);
 

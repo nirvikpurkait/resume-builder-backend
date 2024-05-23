@@ -9,7 +9,8 @@
 	"scripts": {
 		"start": "node dist/index.js",
 		"execute": "ts-node src/index.ts",
-		"dev": "nodemon --exec \"npm run execute\" --ext \"ts, json\"",
+		"dev": "nodemon",
+		"dev-start": "nodemon --exec npm run execute",
 		"build": "npx tsc",
 		"prisma-generate": "npx prisma generate",
 		"prisma-push": "npx prisma db push --accept-data-loss",
@@ -26,6 +27,7 @@
 		"dotenv": "^16.4.5",
 		"express": "^4.19.2",
 		"multer": "^1.4.5-lts.1",
+		"npm-run-all": "^4.1.5",
 		"prisma": "^5.14.0"
 	},
 	"devDependencies": {

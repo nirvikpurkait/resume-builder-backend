@@ -40,6 +40,8 @@ router.use("/", async (req, res) => {
 			// check password is correct
 			if (reqBody.password === user.password) {
 				res.statusCode = 201;
+				res.cookie("username", user.username);
+				res.cookie("role", user.role);
 				if (reqBody.role === "ADMIN") {
 					resBody = {
 						authorization: "authorized",
