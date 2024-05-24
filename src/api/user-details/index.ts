@@ -17,8 +17,6 @@ router.use("/", async (req, res) => {
 			};
 		});
 
-	console.log(req.cookies);
-
 	res.statusCode = 200;
 
 	return res.json(modifiedUsers);
